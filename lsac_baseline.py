@@ -1,5 +1,5 @@
-# baseline_simple.py
-# minimal baseline: logistic regression + basic fairness summaries
+# baseline.py
+# baseline: logistic regression + basic fairness summaries
 
 import pandas as pd
 import numpy as np
