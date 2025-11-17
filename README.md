@@ -10,20 +10,13 @@
 This project studies fairness and accuracy trade-offs in predicting first-year law school GPA using the LSAC National Longitudinal Bar Passage Study dataset (~27,000 students with LSAT scores, undergrad GPA, race, gender, and law school outcomes). We analyze how different machine learning models perform across demographic groups and test fairness intervention techniques like reweighing to reduce bias while maintaining predictive accuracy.
 
 ## Repository Contents
-```
-cs396-final-project/
-├── preliminary_deliverables/
-│   ├── plots/
-│   │   ├── fig1_demographics.png
-│   │   ├── fig2_gpa_distribution_by_race.png
-│   │   ├── fig3_outcome_disparities.png
-│   │   └── fig4_feature_disparities.png
-│   ├── lsac_baseline.py       # Baseline logistic regression with fairness metrics
-│   ├── lsac_eda.py             # Exploratory data analysis and quality checks
-│   └── lsac_visualizations.py  # Generate demographic and outcome visualizations
-├── lsac_data.csv               # LSAC dataset from AIF360 library
-└── README.md
-```
+- **preliminary_deliverables/** - Preliminary analysis and baseline model
+  - **plots/** - Visualizations (demographics, GPA distributions, outcome disparities, feature gaps)
+  - `lsac_baseline.py` - Baseline logistic regression with fairness metrics
+  - `lsac_eda.py` - Exploratory data analysis and quality checks
+  - `lsac_visualizations.py` - Generate demographic and outcome visualizations
+- `lsac_data.csv` - LSAC dataset from AIF360 library
+- `README.md` - Project documentation
 
 ## Getting Started
 ```bash
