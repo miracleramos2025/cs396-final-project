@@ -1,4 +1,4 @@
-# baseline.py
+# lsac_baseline.py
 # baseline: logistic regression + basic fairness summaries
 
 import pandas as pd
