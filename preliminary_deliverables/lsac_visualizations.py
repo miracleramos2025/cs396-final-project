@@ -5,8 +5,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# load and prepare data
-df = pd.read_csv("lsac_data.csv")
+# load and prepare data (from parent directory)
+df = pd.read_csv("../lsac_data.csv")
 if "ZFYGPA" in df.columns:
     df = df.rename(columns={"ZFYGPA": "zfygpa"})
 
@@ -58,8 +58,8 @@ for i, (idx, val) in enumerate(gender_counts.items()):
 ax2.set_ylim(0, max(gender_counts.values) * 1.1)
 
 plt.tight_layout()
-plt.savefig("fig1_demographics.png", dpi=300, bbox_inches='tight')
-print("✓ Saved: fig1_demographics.png")
+plt.savefig("plots/fig1_demographics.png", dpi=300, bbox_inches='tight')
+print("✓ Saved: plots/fig1_demographics.png")
 plt.close()
 
 
@@ -78,8 +78,8 @@ ax.legend(fontsize=11)
 ax.grid(axis='y', alpha=0.3)
 
 plt.tight_layout()
-plt.savefig("fig2_gpa_distribution_by_race.png", dpi=300, bbox_inches='tight')
-print("✓ Saved: fig2_gpa_distribution_by_race.png")
+plt.savefig("plots/fig2_gpa_distribution_by_race.png", dpi=300, bbox_inches='tight')
+print("✓ Saved: plots/fig2_gpa_distribution_by_race.png")
 plt.close()
 
 
@@ -113,8 +113,8 @@ plt.suptitle("")  # remove default title
 fig3.suptitle("Outcome Disparities: First-Year GPA Varies Significantly by Race", 
               fontsize=14, fontweight='bold', y=1.02)
 plt.tight_layout()
-plt.savefig("fig3_outcome_disparities.png", dpi=300, bbox_inches='tight')
-print("✓ Saved: fig3_outcome_disparities.png")
+plt.savefig("plots/fig3_outcome_disparities.png", dpi=300, bbox_inches='tight')
+print("✓ Saved: plots/fig3_outcome_disparities.png")
 plt.close()
 
 
@@ -169,8 +169,8 @@ plt.suptitle("")  # remove default title
 fig4.suptitle("Feature Disparities Explain Indirect Bias\n(Even without using race/gender, model learns through LSAT/UGPA)", 
               fontsize=14, fontweight='bold', y=0.995)
 plt.tight_layout()
-plt.savefig("fig4_feature_disparities.png", dpi=300, bbox_inches='tight')
-print("✓ Saved: fig4_feature_disparities.png")
+plt.savefig("plots/fig4_feature_disparities.png", dpi=300, bbox_inches='tight')
+print("✓ Saved: plots/fig4_feature_disparities.png")
 plt.close()
 
 print("\n" + "="*60)

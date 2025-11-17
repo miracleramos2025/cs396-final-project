@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 # Load data
-df = pd.read_csv("lsac_data.csv")
+df = pd.read_csv("../lsac_data.csv")
 if "ZFYGPA" in df.columns:
     df = df.rename(columns={"ZFYGPA": "zfygpa"})
 

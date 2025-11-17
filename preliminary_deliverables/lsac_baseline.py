@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score, roc_auc_score
 from fairlearn.metrics import MetricFrame, selection_rate, demographic_parity_difference, equalized_odds_difference
 
 # load data
-df = pd.read_csv("lsac_data.csv")
+df = pd.read_csv("../lsac_data.csv")
 if "ZFYGPA" in df.columns:
     df = df.rename(columns={"ZFYGPA": "zfygpa"})
 
