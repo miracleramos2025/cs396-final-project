@@ -16,6 +16,7 @@ from fairlearn.metrics import (
     demographic_parity_difference,
     equalized_odds_difference,
 )
+from visualization_utils import save_results_visualization, log_summary_row
 
 
 #Load data
@@ -113,7 +114,9 @@ pred_post = eo_optimizer.predict(X_test, sensitive_features=r_test)
 
 #  Evaluate performance and fairness
 
-print(f"Postprocessed Model | Accuracy: {accuracy_score(y_test, pred_post):.3f} | AUC: {roc_auc_score(y_test, proba_test):.3f}")
+overall_acc = accuracy_score(y_test, pred_post)
+overall_auc = roc_auc_score(y_test, proba_test)
+print(f"Postprocessed Model | Accuracy: {overall_acc:.3f} | AUC: {overall_auc:.3f}")
 
 def fairness(sens, name):
     mf = MetricFrame(
@@ -131,6 +134,27 @@ def fairness(sens, name):
     print("Accuracies:\n", mf.by_group["accuracy"])
     print(f"DP difference: {dp:.3f}")
     print(f"EO difference: {eo:.3f}")
+    return dp, eo
 
-fairness(g_test, "gender")
-fairness(r_test, "race")
+dp_gender, eo_gender = fairness(g_test, "gender")
+dp_race, eo_race = fairness(r_test, "race")
+
+# Log one-row summary for this model
+log_summary_row(
+    model_name="decision_tree_postprocessed",
+    overall_accuracy=overall_acc,
+    overall_auc=overall_auc,
+    dp_gender=dp_gender,
+    eo_gender=eo_gender,
+    dp_race=dp_race,
+    eo_race=eo_race,
+)
+
+# Visualizations for postprocessed decision tree
+save_results_visualization(
+    model_name="decision_tree_postprocessed",
+    y_test=y_test,
+    pred=pred_post,
+    proba=proba_test,
+    sensitive_features_dict={"gender": g_test, "race": r_test},
+)

@@ -5,6 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score
 
 from fairlearn.metrics import MetricFrame, selection_rate, demographic_parity_difference, equalized_odds_difference
+from visualization_utils import save_results_visualization, log_summary_row
 
 # Load data
 df = pd.read_csv("../lsac_data.csv")
@@ -89,7 +90,9 @@ proba = tree.predict_proba(X_test)[:, 1]
 pred = (proba >= 0.5).astype(int)
 
 #Performance metrics
-print(f"Decision Tree | Accuracy: {accuracy_score(y_test, pred):.3f} | AUC: {roc_auc_score(y_test, proba):.3f}")
+overall_acc = accuracy_score(y_test, pred)
+overall_auc = roc_auc_score(y_test, proba)
+print(f"Decision Tree | Accuracy: {overall_acc:.3f} | AUC: {overall_auc:.3f}")
 
 
 #Fairness metrices
@@ -109,6 +112,27 @@ def fairness(sens, name):
     print("Accuracies:\n", mf.by_group["accuracy"])
     print(f"DP difference: {dp:.3f}")
     print(f"EO difference: {eo:.3f}")
+    return dp, eo
 
-fairness(g_test, "gender")
-fairness(r_test, "race")
+dp_gender, eo_gender = fairness(g_test, "gender")
+dp_race, eo_race = fairness(r_test, "race")
+
+# Log one-row summary for this model
+log_summary_row(
+    model_name="decision_tree_reweighted",
+    overall_accuracy=overall_acc,
+    overall_auc=overall_auc,
+    dp_gender=dp_gender,
+    eo_gender=eo_gender,
+    dp_race=dp_race,
+    eo_race=eo_race,
+)
+
+# Visualizations (ROC, confusion matrix, fairness by group)
+save_results_visualization(
+    model_name="decision_tree_reweighted",
+    y_test=y_test,
+    pred=pred,
+    proba=proba,
+    sensitive_features_dict={"gender": g_test, "race": r_test},
+)
