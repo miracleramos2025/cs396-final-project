@@ -19,18 +19,26 @@ This project studies fairness and accuracy trade-offs in predicting first-year l
   - `lsac_baseline.py` - Baseline logistic regression with fairness metrics
   - `lsac_eda.py` - Exploratory data analysis and quality checks
   - `lsac_visualizations.py` - Generate demographic and outcome visualizations
-- `core_deliverables/` - Core model implementations and fairness interventions
-  - `plots/` - Model visualizations
+- `plots/` - Model visualizations
   - `decision_tree.py` - Decision tree implementation
   - `Bdecision_tree.py` - Boosted decision tree implementation
   - `decision_tree_postprocess.py` - Post-processing fairness corrections for decision trees
   - `random_forest.py` - Random forest implementation
   - `postprocess_random_forest.py` - Post-processing fairness corrections for random forest
   - `rewight_random_forest.py` - Reweighing pre-processing for random forest
+  - `catboostbaseline.py` - CatBoost baseline implementation
+  - `catboostpostprocess.py` - Post-processing fairness corrections for CatBoost
+  - `catboostreweighed.py` - Reweighing pre-processing for CatBoost
+  - `xgboostbase.py` - XGBoost baseline implementation
+  - `xgboostreweighted.py` - Reweighing pre-processing for XGBoost
   - `model_results.csv` - Results across all models
   - `summarize_results.py` - Summary statistics and comparisons
   - `visualization_utils.py` - Visualizations for model performance and fairness
-- `stretch_deliverables/` - 
+- `stretch_deliverables/` - Neural network experiments
+  - `NeuralNet_analyze_hidden_layer.ipynb` - Analysis of neural network hidden layer representations
+  - `NeuralNet_with_loss_term.ipynb` - Neural network with fairness loss term
+  - `neuralnet_analyze_hidden_layer.py` - Hidden layer analysis
+  - `neuralnet_with_loss_term.py` - Fairness loss implementation
 - `lsac_data.csv` - LSAC dataset from AIF360 library
 - `README.md` - Project documentation
 
