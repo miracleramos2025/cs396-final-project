@@ -19,7 +19,8 @@ This project studies fairness and accuracy trade-offs in predicting first-year l
   - `lsac_baseline.py` - Baseline logistic regression with fairness metrics
   - `lsac_eda.py` - Exploratory data analysis and quality checks
   - `lsac_visualizations.py` - Generate demographic and outcome visualizations
-- `plots/` - Model visualizations
+- `core_deliverables/` - Core model implementations and fairness interventions
+  - `plots/` - Model visualizations
   - `decision_tree.py` - Decision tree implementation
   - `Bdecision_tree.py` - Boosted decision tree implementation
   - `decision_tree_postprocess.py` - Post-processing fairness corrections for decision trees
